@@ -1,0 +1,27 @@
+
+Step 1: Read problem
+  - Problem is very similar to the prisoner and light switch problem.
+  - Minotaur has n guests (threads)
+  - One guest can enter the labyrinth  at a time
+  - Starts with cake at the end
+  - Can eat the cake if there is cake, can ask for a new cake, can eat the new cake
+    can leave the new cake
+  - Has to be able to tell the minotaur that everyone has gone
+
+Step 2: Devise ideas and potential solutions
+  - Each guest is a thread
+  - The labyrinth is a critical section
+  - The cake is a shared / atomic variable that needs to be accessed
+  - The guests are stored in some data structure and chosen to enter the
+    labyrinth at random
+  - One thread is the leader / counter
+    - If they find no cake in the labyrinth then that means someone else has
+      gone through. They add 1 to the amount of people who went and order new cake.
+    - If they find cake that means it has not been someone's first time in the
+      labyrinth and does nothing
+  - Every other thread
+    - They can only eat the cake if it is their first time through
+  - The selected counter is the only one that can order a new cake
+
+Step 3: Write program to solve problem
+Step 4: Test
